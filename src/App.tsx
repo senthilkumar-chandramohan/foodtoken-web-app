@@ -12,7 +12,6 @@ import ScanQRC from './modules/ScanQRC';
 import GenerateQRC from './modules/GenerateQRC';
 import SetPhoneNumber from './modules/SetPhoneNumber';
 import ViewBalance from './modules/ViewBalance';
-import TransactionHistory from './modules/TransactionHistory';
 
 function App() {
   return (
@@ -24,7 +23,6 @@ function App() {
           <Route path="/set-phone-number" element={<SetPhoneNumber />} />
           <Route path="/view-balance" element={<ViewBalance />} />
           <Route path="/generate-qrc" element={<GenerateQRC sellerName="LLP Catering" accountID={localStorage.getItem('accountID')} amount={20} />} />
-          {/* <Route path="/view-transactions" element={<TransactionHistory />} /> */}
         </Routes>
       </BrowserRouter>
     </div>

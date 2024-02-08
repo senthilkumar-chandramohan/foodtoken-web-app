@@ -2,11 +2,15 @@ import { useState } from 'react';
 
 const SetPhoneNumber = () => {
     const [status, setStatus] = useState('');
+    const [phone, setPhone] = useState('');
+
+    const updatePhone = (e) => {
+        setPhone(e.target.value);
+    };
 
     const setPhoneNumber = () => {
-        const accountID = document?.getElementById('phoneNumber')?.value;
-        localStorage.setItem('accountID', accountID);
-        window.localStorage.setItem('accountID', accountID);
+//        localStorage.setItem('accountID', accountID);
+        window.localStorage.setItem('accountID', phone);
         setStatus('Phone number set');
     }
 
@@ -15,7 +19,7 @@ const SetPhoneNumber = () => {
             <br/><br/>
             <label htmlFor="phoneNumber">Phone Number</label>
             <br/>
-            <input id="phoneNumber" type="number" />
+            <input id="phoneNumber" type="number" value={phone} onChange={updatePhone} />
             <br/><br/>
             <button onClick={setPhoneNumber}>Set</button>
             <div id="status">{status}</div>

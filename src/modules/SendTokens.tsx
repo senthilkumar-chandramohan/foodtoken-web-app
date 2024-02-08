@@ -5,17 +5,25 @@ import { SERVER_URL } from "../utils/constants";
 
 const SendTokens = (props) => {
     const [success, setSuccess] = useState(false);
+    const [note, setNote] = useState('');
+    const [amount, setAmount] = useState(0);
     const navigate = useNavigate();
     const {
         accountID,
         sellerName,
-        amount = '',
     } = props;
 
-    const paySeller = () => {
-        const note = document.getElementById('note').value;
-        const amount = document.getElementById('amount').value;
+    setAmount(props.amount);
 
+    const updateNote = (e) => {
+        setNote(e.target.value);
+    }
+
+    const updateAmount = (e) => {
+        setAmount(e.target.value);
+    }
+
+    const paySeller = () => {
         fetch(`${SERVER_URL}/api/consumer/send-token`, {
             method: 'POST',
             headers: {
@@ -48,8 +56,8 @@ const SendTokens = (props) => {
                 :<></>
             }
             <h3>Paying {sellerName}</h3>
-            <span className="token-logo">₹</span><input type="number" id="amount" className="amount" defaultValue={amount} />
-            <input type="text" className="note" id="note" placeholder="Add a note" />
+            <span className="token-logo">₹</span><input type="number" id="amount" className="amount" value={amount} onChange={updateAmount} />
+            <input type="text" className="note" id="note" placeholder="Add a note" value={note} onChange={updateNote} />
             <button id="sendTokens" className="pay" onClick={paySeller}>Pay</button>
             <a className="cancel" onClick={()=>{
                 navigate("/");

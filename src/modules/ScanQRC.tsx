@@ -5,7 +5,11 @@ import SendTokens from './SendTokens';
 function ScanQRC() {
     // const qrReader = useRef(null);
     const [permissionGranted, setPermissionGranted] = useState(false);
-    const [scanData, setScanData] = useState(null);
+    const [scanData, setScanData] = useState({
+        accountID: '',
+        sellerName: '',
+        amount: 0
+    });
 
     function handleScan(result) {
         console.log('result', result);
