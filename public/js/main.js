@@ -9,7 +9,7 @@ allowNotificationsBtn.addEventListener('click', () => {
             console.log('Push notifications are allowed');
             if ("serviceWorker" in navigator) {
                 navigator.serviceWorker.register("/sw.js").then(async (registration) => {
-                    const SERVER_URL = "https://foodtoken-server-app-755765b3520f.herokuapp.com/";
+                    const SERVER_URL = "https://foodtoken-server-app-755765b3520f.herokuapp.com";
                     console.log("SW Registered!");
                     console.log(registration);
         
