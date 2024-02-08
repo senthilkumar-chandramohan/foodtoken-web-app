@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "proxy": "http://localhost:3002",
+  "proxy": "https://foodtoken-server-app-755765b3520f.herokuapp.com",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
