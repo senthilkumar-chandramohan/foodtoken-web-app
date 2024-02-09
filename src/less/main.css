@@ -135,6 +135,50 @@ p.legal {
 .icon.transactions::before {
   background-image: url("data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCBoZWlnaHQ9IjQxNiIgcng9IjQ4IiByeT0iNDgiIHdpZHRoPSIzMjAiIHg9Ijk2IiB5PSI0OCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZjVmNWY1IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjMycHgiIGNsYXNzPSJzdHJva2UtMDAwMDAwIj48L3JlY3Q+PHBhdGggZD0iTTE3NiAxMjhoMTYwTTE3NiAyMDhoMTYwTTE3NiAyODhoODAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2Y1ZjVmNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjMycHgiIGNsYXNzPSJzdHJva2UtMDAwMDAwIj48L3BhdGg+PC9zdmc+");
 }
+.send-tokens {
+  color: #f2f2f2;
+}
+.send-tokens input {
+  display: block;
+  margin: 10px auto;
+}
+.send-tokens input.amount {
+  display: inline-block;
+  background: none;
+  border: 0;
+  font-size: 3rem;
+  width: 150px;
+  text-align: center;
+  color: #F5F5F5;
+}
+.send-tokens input.note {
+  font-size: 2rem;
+  background: none;
+  border: solid 1px #F5F5F5;
+  color: #F5F5F5;
+  padding: 5px 15px;
+  border-radius: 20px;
+  text-align: center;
+}
+.send-tokens button.pay {
+  font-size: 2rem;
+  background: #F5F5F5;
+  border: 0;
+  border-radius: 20px;
+  padding: 10px 40px;
+  font-weight: normal;
+  margin: 80px auto 20px;
+  width: 100%;
+}
+.send-tokens a.cancel {
+  display: block;
+  margin-top: 15px;
+  font-size: 2rem;
+  text-align: center;
+}
+.send-tokens .token-logo {
+  font-size: 3rem;
+}
 .footer {
   color: #F5F5F5;
   margin-top: 3rem;

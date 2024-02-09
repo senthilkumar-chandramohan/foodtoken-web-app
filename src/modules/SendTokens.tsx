@@ -5,15 +5,14 @@ import { SERVER_URL } from "../utils/constants";
 
 const SendTokens = (props) => {
     const [success, setSuccess] = useState(false);
+    const [error, setError] = useState(false);
     const [note, setNote] = useState('');
-    const [amount, setAmount] = useState(0);
+    const [amount, setAmount] = useState(props.amount);
     const navigate = useNavigate();
     const {
         accountID,
         sellerName,
     } = props;
-
-    setAmount(props.amount);
 
     const updateNote = (e) => {
         setNote(e.target.value);
@@ -39,7 +38,7 @@ const SendTokens = (props) => {
             console.log(response);
             setSuccess(true);
         }).catch((err) => {
-            setSuccess(false);
+            setError(true);
             console.log(err);
         });
     }
@@ -51,15 +50,16 @@ const SendTokens = (props) => {
     return (
         <div id="send-tokens" className="send-tokens">
             {
-                success===false
+                error
                 ?<div className="error">Error while paying seller, please try again</div>
                 :<></>
             }
             <h3>Paying {sellerName}</h3>
-            <span className="token-logo">₹</span><input type="number" id="amount" className="amount" value={amount} onChange={updateAmount} />
-            <input type="text" className="note" id="note" placeholder="Add a note" value={note} onChange={updateNote} />
+            <span className="token-logo">₹</span>
+            <input type="number" className="amount" defaultValue={amount} onChange={updateAmount} />
+            <input type="text" className="note" placeholder="Add a note" defaultValue={note} onChange={updateNote} />
             <button id="sendTokens" className="pay" onClick={paySeller}>Pay</button>
-            <a className="cancel" onClick={()=>{
+            <a href="#" className="cancel" onClick={()=>{
                 navigate("/");
             }}>Cancel</a>
         </div>

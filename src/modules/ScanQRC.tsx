@@ -18,7 +18,7 @@ function ScanQRC() {
         }
     }
 
-    function handleError(err){
+    function handleError(err) {
         console.error(err);
     }
 
