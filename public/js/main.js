@@ -12,12 +12,12 @@ allowNotificationsBtn.addEventListener('click', () => {
                     const SERVER_URL = "https://foodtoken-server-app-755765b3520f.herokuapp.com";
                     console.log("SW Registered!");
                     console.log(registration);
-        
+
                     let sw = await navigator.serviceWorker.ready;
                     console.log("sw", sw);
 
                     const accountID = window.localStorage.getItem('accountID');
-                    const response = await fetch(`${SERVER_URL}/get-app-server-key?accountID=${accountID}`);
+                    const response = await fetch(`${SERVER_URL}/api/common/get-app-server-key?accountID=${accountID}`);
                     const data = await response.json();
                     const { publicKey } = data;
                     console.log(publicKey);
@@ -28,7 +28,7 @@ allowNotificationsBtn.addEventListener('click', () => {
                     });
                     console.log("sub", sub);
         
-                    fetch(`${SERVER_URL}/add-subscription?accountID=${accountID}`, {
+                    fetch(`${SERVER_URL}/api/common/add-subscription?accountID=${accountID}`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
