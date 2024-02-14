@@ -2,31 +2,39 @@ import { useState, useEffect } from "react";
 import TransactionHistory from "./TransactionHistory";
 import { SERVER_URL } from "../utils/constants";
 
+import { useAuth } from '../contexts/AuthContext';
+
 const ViewBalance = () => {
-    const [balance, setBalance] = useState('...');
+    const [ balance, setBalance ] = useState('');
+    const [ showTransactions, setShowTransactions ] = useState(false);
+    const { currentUser } = useAuth();
+    const { accessToken } = currentUser;
 
     useEffect(() => {
-        const fetchData = ()=> {
-            const accountID = window.localStorage.getItem('accountID');
-            console.log(window.localStorage);
+        if (accessToken) {
+            fetchData(accessToken);
+        }
+    }, [accessToken]);
 
-            fetch(`${SERVER_URL}/api/common/get-balance?accountID=${accountID}`, {
-                method: 'GET',
-            }).then((response) => {
-                response.json().then(parsedJson => {
-                    // code that can access both here
-                    console.log(parsedJson);
-                    setBalance(parsedJson.balance);
-                })
-                
-            }).catch((err) => {
-                setBalance('Error fetching balance');
-                console.log(err);
-            });
-        };
+    const fetchData = (accessToken) => {
+        console.log(accessToken);
 
-        fetchData();
-    }, []);
+        fetch(`${SERVER_URL}/api/common/get-balance`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${accessToken}`
+            },
+        }).then((response) => {
+            response.json().then(parsedJson => {
+                console.log(parsedJson);
+                setBalance(parsedJson.balance);
+            })
+        }).catch((err) => {
+            setBalance('Error fetching balance');
+            console.log(err);
+        });
+    };
 
     return (
         <div className="container">
@@ -37,7 +45,11 @@ const ViewBalance = () => {
             </div>
             <div className="row">
                 <div className="col-xs-12">
-                    <TransactionHistory />
+                    {
+                        !showTransactions ?
+                        <button onClick={()=>{setShowTransactions(true)}}>Show Transactions</button>:
+                        <TransactionHistory />
+                    }
                 </div>
             </div>
         </div>

@@ -2,16 +2,22 @@ import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import PaymentSuccess from "./PaymentSuccess";
 import { SERVER_URL } from "../utils/constants";
+import { useAuth } from '../contexts/AuthContext';
 
 const SendTokens = (props) => {
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState(false);
     const [note, setNote] = useState('');
     const [amount, setAmount] = useState(props.amount);
+    const { currentUser } = useAuth();
+    const { accessToken } = currentUser;
+
     const navigate = useNavigate();
     const {
         accountID,
         sellerName,
+        toEmailID,
+        toPhoneNumber,
     } = props;
 
     const updateNote = (e) => {
@@ -26,11 +32,13 @@ const SendTokens = (props) => {
         fetch(`${SERVER_URL}/api/consumer/send-token`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${accessToken}`
             },
             body: JSON.stringify({
-                fromAccountID: window.localStorage.getItem('accountID'),
                 toAccountID: accountID,
+                toEmailID,
+                toPhoneNumber,
                 amount,
                 note,
             }),

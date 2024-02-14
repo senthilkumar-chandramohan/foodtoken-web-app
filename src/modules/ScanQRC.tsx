@@ -76,7 +76,7 @@ function ScanQRC() {
             {/* <button id="uploadFromGallery" onClick={openImageDialog}>Upload QR Image</button> */}
         </div>
     )
-    : 
+    :
     <div>Initializing camera...</div>
 }
 

@@ -1,18 +1,22 @@
 import { useState, useEffect } from "react";
 import moment from "moment";
 import { SERVER_URL } from "../utils/constants";
+import { useAuth } from '../contexts/AuthContext';
 
 const TransactionHistory = () => {
     const [history, setHistory] = useState([]);
+    const { currentUser } = useAuth();
+    const { accessToken } = currentUser;
 
     useEffect(() => {
         const fetchData = ()=> {
-            const accountID = window.localStorage.getItem('accountID');
-            console.log(window.localStorage);
-
             if (history.length === 0) {
-                fetch(`${SERVER_URL}/api/common/get-txn-history?accountID=${accountID}`, {
+                fetch(`${SERVER_URL}/api/common/get-txn-history`, {
                     method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${accessToken}`
+                    },
                 }).then((response) => {
                     response.json().then(parsedJson => {
                         // code that can access both here

@@ -4,13 +4,19 @@ body {
   color: #F5F5F5;
   caret-color: transparent;
 }
+.center {
+  text-align: center;
+}
+.highlight {
+  color: #f2eda7;
+}
 .root {
   margin: 0 auto;
 }
 img.header {
   margin: 0 auto 3rem;
 }
-p.legal {
+.legal {
   font-size: 0.75rem;
 }
 .root {
