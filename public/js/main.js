@@ -16,8 +16,13 @@ allowNotificationsBtn.addEventListener('click', () => {
                     let sw = await navigator.serviceWorker.ready;
                     console.log("sw", sw);
 
-                    const accountID = window.localStorage.getItem('accountID');
-                    const response = await fetch(`${SERVER_URL}/api/common/get-app-server-key?accountID=${accountID}`);
+                    const response = await fetch(`${SERVER_URL}/api/common/get-app-server-key`, {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${window.user.accessToken}`
+                        },
+                    });
                     const data = await response.json();
                     const { publicKey } = data;
                     console.log(publicKey);
@@ -28,10 +33,11 @@ allowNotificationsBtn.addEventListener('click', () => {
                     });
                     console.log("sub", sub);
         
-                    fetch(`${SERVER_URL}/api/common/add-subscription?accountID=${accountID}`, {
+                    fetch(`${SERVER_URL}/api/common/add-subscription`, {
                         method: 'POST',
                         headers: {
-                            'Content-Type': 'application/json'
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${window.user.accessToken}`
                         },
                         body: JSON.stringify(sub.toJSON()),
                     }).then((response) => {

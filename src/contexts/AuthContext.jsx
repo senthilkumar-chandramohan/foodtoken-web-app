@@ -19,6 +19,16 @@ export const AuthContextProvider = ({ children }) => {
             console.log(user);
             setCurrentUser({ ...user });
             setUserLoggedIn(true);
+
+            // Store user's access token in window object, to be used by push notification code
+            if (window) {
+                const {
+                    accessToken,
+                } = user;
+
+                window.user = { accessToken }
+                console.log(window.user);
+            }
         } else {
             setCurrentUser(null);
             setUserLoggedIn(false);
