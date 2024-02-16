@@ -27,10 +27,10 @@ const GenerateQRC = ({ sellerName, userId, amount = '' }) => {
 
     console.log(payload);
 
-    function shareBase64Image(base64Data, imageName) {
+    function shareBase64Image(base64Data: string, imageName: string) {
         // Convert base64 to Blob
         const byteCharacters = atob(base64Data);
-        const byteArrays = [];
+        const byteArrays: Uint8Array[] = [];
         for (let offset = 0; offset < byteCharacters.length; offset += 512) {
           const slice = byteCharacters.slice(offset, offset + 512);
           const byteNumbers = new Array(slice.length);
