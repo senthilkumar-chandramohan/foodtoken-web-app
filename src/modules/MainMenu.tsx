@@ -40,13 +40,6 @@ function MainMenu() {
                         <p className="icon wallet">Wallet</p>
                     </a>
                 </div>
-                {/* <div className="col-4 tile">
-                    <a onClick={()=>{
-                        navigate("/view-transactions");
-                    }}>
-                        <p className="icon transactions">View Transactions</p>
-                    </a>
-                </div> */}
             </div>
         </div>
       </div>

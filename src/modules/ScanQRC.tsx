@@ -6,14 +6,14 @@ function ScanQRC() {
     // const qrReader = useRef(null);
     const [permissionGranted, setPermissionGranted] = useState(false);
     const [scanData, setScanData] = useState({
-        accountID: '',
+        userId: '',
         sellerName: '',
-        amount: 0
+        amount: ''
     });
 
     function handleScan(result) {
-        console.log('result', result);
         if (result) {
+            console.log('result', result);
             setScanData(JSON.parse(result?.text));
         }
     }
@@ -46,14 +46,14 @@ function ScanQRC() {
 
     if (scanData) {
         const {
-            accountID,
+            userId,
             sellerName,
             amount,
         } = scanData;
     
-        if (accountID?.length) {
+        if (userId?.length) {
             return (
-                <SendTokens accountID={accountID} sellerName={sellerName} amount={amount} />
+                <SendTokens userId={userId} sellerName={sellerName} amount={amount} />
             )
         }
     }

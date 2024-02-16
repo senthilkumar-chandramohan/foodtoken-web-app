@@ -9,8 +9,8 @@ const SetPhoneNumber = () => {
     };
 
     const setPhoneNumber = () => {
-//        localStorage.setItem('accountID', accountID);
-        window.localStorage.setItem('accountID', phone);
+//        localStorage.setItem('userId', userId);
+        window.localStorage.setItem('userId', phone);
         setStatus('Phone number set');
     }
 

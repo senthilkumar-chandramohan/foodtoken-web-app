@@ -1,25 +1,55 @@
+import { useRef, useEffect } from 'react';
 import QRCode from 'react-qr-code';
+import { useScreenshot } from 'use-react-screenshot';
 
-const GenerateQRC = ({ sellerName, accountID, amount = '' }) => {
+function ShareButtons({ message, url }) {
+    const shareViaWhatsApp = () => {
+      window.open(`whatsapp://send?text=${encodeURIComponent(message)}&‌url=${encodeURIComponent(url)}`);
+    };
+  
+    return (
+      <div>
+        <button className="icon whatsapp" onClick={shareViaWhatsApp}>Share QR Code</button>
+      </div>
+    );
+}
+
+const GenerateQRC = ({ sellerName, userId, amount = '' }) => {
+    const ref = useRef(null);
+    const [image, takeScreenshot] = useScreenshot();
+    const getImage = () => takeScreenshot(ref.current);
+
     const payload = JSON.stringify({
         sellerName,
-        accountID,
+        userId,
         amount,
     });
 
     console.log(payload);
 
+    useEffect(() => {
+        getImage();
+    });
+
     return (
-        <div className='center'>
-            <h4>Scan below code to pay</h4>
-            <h2 className='highlight'>{sellerName}</h2>
-            {
-                amount && (<h4>an amount of<br /><span className="highlight token-logo">₹{amount}</span></h4>)
-            }
-            <div style={{ marginTop: '30px', background: 'white', padding: '16px' }}>
-                <QRCode value={payload} />
+        <>
+            <div className='center'>
+                <h4>QR Code for</h4>
+                <h2 className='highlight'>{sellerName}</h2>
+                {
+                    amount && (<><h4>to receive an amount of</h4><h2 className="highlight token-logo">${amount}</h2></>)
+                }
+
+                <div ref={ref} style={{ margin: '30px 0', background: 'white', padding: '15px' }}>
+                    <QRCode value={payload} />
+                </div>
+
+                {
+                    image && 
+                    <ShareButtons message={`Pay ${sellerName} using this QR Code`} url={image} />
+                }
             </div>
-        </div>
+        </>
     )
 };
 

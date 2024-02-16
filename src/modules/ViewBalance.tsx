@@ -40,7 +40,7 @@ const ViewBalance = () => {
         <div className="container">
             <div className="row">
                 <div className="col-xs-12">
-                    Your Balance: <span className="token-logo">₹ {balance}</span>
+                    Your Balance: <span className="token-logo">$ {balance}</span>
                 </div>
             </div>
             <div className="row">

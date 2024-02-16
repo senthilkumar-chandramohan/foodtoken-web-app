@@ -20,7 +20,8 @@
     "react-google-button": "^0.7.2",
     "react-qr-code": "^2.0.12",
     "react-qr-scanner": "^1.0.0-alpha.11",
-    "react-router-dom": "^6.21.3"
+    "react-router-dom": "^6.21.3",
+    "use-react-screenshot": "^4.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",

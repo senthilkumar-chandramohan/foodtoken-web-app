@@ -29,7 +29,7 @@ function App() {
                 <Route path="/scan-qrc" element={<ScanQRC />} />
                 <Route path="/set-phone-number" element={<SetPhoneNumber />} />
                 <Route path="/view-balance" element={<ViewBalance />} />
-                <Route path="/generate-qrc" element={<GenerateQRC sellerName={currentUser.displayName} accountID={currentUser.uid} amount="20" />} />
+                <Route path="/generate-qrc" element={<GenerateQRC sellerName={currentUser.displayName} userId={currentUser.uid} />} />
               </Routes>
             </BrowserRouter>
           ) :

@@ -14,9 +14,9 @@ const SendTokens = (props) => {
 
     const navigate = useNavigate();
     const {
-        accountID,
+        userId,
         sellerName,
-        toEmailID,
+        toEmailId,
         toPhoneNumber,
     } = props;
 
@@ -36,8 +36,8 @@ const SendTokens = (props) => {
                 'Authorization': `Bearer ${accessToken}`
             },
             body: JSON.stringify({
-                toAccountID: accountID,
-                toEmailID,
+                toUserId: userId,
+                toEmailId,
                 toPhoneNumber,
                 amount,
                 note,
@@ -63,7 +63,7 @@ const SendTokens = (props) => {
                 :<></>
             }
             <h3>Paying {sellerName}</h3>
-            <span className="token-logo">₹</span>
+            <span className="token-logo">$</span>
             <input type="number" className="amount" defaultValue={amount} onChange={updateAmount} />
             <input type="text" className="note" placeholder="Add a note" defaultValue={note} onChange={updateNote} />
             <button id="sendTokens" className="pay" onClick={paySeller}>Pay</button>
