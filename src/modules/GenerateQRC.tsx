@@ -34,7 +34,7 @@ const GenerateQRC = ({ sellerName, userId, amount = '' }) => {
         navigator.share({
           files: [new File([blob], imageName, { type: 'image/png' })],
           title: `Pay ${sellerName} using this QR Code`,
-          text: '',
+          text: `Pay ${sellerName} using this QR Code`,
         })
         .then(() => console.log('Shared successfully'))
         .catch((error) => console.error('Share failed:', error));
