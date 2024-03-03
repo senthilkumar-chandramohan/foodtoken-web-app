@@ -4,6 +4,15 @@ body {
   color: #F5F5F5;
   caret-color: transparent;
 }
+button {
+  border-radius: 10px;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #040404;
+  cursor: pointer;
+}
 .center {
   text-align: center;
 }
@@ -143,6 +152,100 @@ p.icon.meal::before {
 }
 p.icon.transactions::before {
   background-image: url("data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCBoZWlnaHQ9IjQxNiIgcng9IjQ4IiByeT0iNDgiIHdpZHRoPSIzMjAiIHg9Ijk2IiB5PSI0OCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZjVmNWY1IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjMycHgiIGNsYXNzPSJzdHJva2UtMDAwMDAwIj48L3JlY3Q+PHBhdGggZD0iTTE3NiAxMjhoMTYwTTE3NiAyMDhoMTYwTTE3NiAyODhoODAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2Y1ZjVmNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjMycHgiIGNsYXNzPSJzdHJva2UtMDAwMDAwIj48L3BhdGg+PC9zdmc+");
+}
+.pay-phone-number-email {
+  min-height: 500px;
+  min-width: 350px;
+  font-size: 1.25rem;
+}
+.pay-phone-number-email button.tab {
+  border-radius: 10px;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 2rem;
+}
+.pay-phone-number-email button.tab.active {
+  background: #2da69a;
+  color: #F5F5F5;
+}
+.pay-phone-number-email .country-dropdown {
+  position: relative;
+}
+.pay-phone-number-email .country-dropdown select {
+  position: absolute;
+  z-index: 999;
+  top: 50px;
+  left: 0;
+}
+.pay-phone-number-email .country-dropdown button.flag {
+  color: #F5F5F5;
+  background-color: #263f73;
+  border: 0;
+  position: absolute;
+  z-index: 1;
+  top: 7px;
+  left: 0;
+  padding: 4px 10px 4px 40px;
+}
+.pay-phone-number-email .country-dropdown button.flag::before {
+  content: "";
+  display: block;
+  width: 32px;
+  height: 28px;
+  position: absolute;
+  top: 4px;
+  left: 0;
+  background-size: 100%;
+}
+.pay-phone-number-email .country-dropdown button.flag.IN::before {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAehJREFUaEPtmE1LQkEYhc9oEeamFLUWQSAKkqIW7t20z9bqSvAv9BPa66ZVC++yFrly409I8Av6kFDadUWsRXLhfsSMIEXRZkavysx+3nmfc86dd7gEK77IivcPCWC3g9IB6QCnAusRIevqxOIUwpbtpHhPmAMSwBb9AemATcLPjpUOSAc4FZAR4hSQe/saOWBZwp8ShmFhNPoErez1bsPpFP/sInSxp4RggH7/HdfXLRiGyWJCiAP5fBSh0C53bL4XmAvA6+sHSqUG0ukDJBIBdl67raJeH6BYTCAY3BEGIRxA0wxUq8+YTHSkUvu4uXlkzWYyYTSbb3A4CM7OQnC5NoRACAcYjzUoSgfJ5B46HRWK0oVpmshmo4jFfMyJ8/MwAgH3MgN0cXwcYIpXKh2YJlj+43E/Wq235QagEbq7e4KmmUgm/bi9pRGaxqbbHc7itLQRoh0OBu8olxs4PT3E0ZEP9KJ7eBiiVntBoRBHOOwREp/p7Tana7TXG7Nr1Omk44VA1y3kclFEIl5hzc8VgBbXdROqSgeZBZ/Pjc1Nh9DmfwB4LreET2Lh3f5RcHShTSexBFiE3NIBm1T+71j5DdhtinRAOsCpwPpEiFMIW7eL/1WwYBwJsGDBfx0nHZAOcCqw8hH6Aq1K/TFZPXqwAAAAAElFTkSuQmCC");
+}
+.pay-phone-number-email .country-dropdown button.flag.IR::before {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAJdJREFUaEPt2VENgDAMBNBVHkIwgQE8IAR7EJiDjqQZefw3ae9ut+uINvkXk/ffDFDNIAYwMIjATyR0LFcWiGs9s6W9bstjGHuLXm2AARIwQEIOcfoAcaEHOvcAG2WjbJSNSqNpDdgHLDSihJ3YUi9Oi9PitDidjlJeJbxKfBan0yqsL8z/Xajv/e3AANVEYAADgwhML6EbEWCgMR0e3hsAAAAASUVORK5CYII=");
+}
+.pay-phone-number-email .country-dropdown button.flag.US::before {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAASdJREFUaEPtWcENwjAMtDdhC6boJGWFvroCTNIp2IJNjFBJKKqQFcU2usr9RXXc3J3PSVQm8IfB108J4N8KpgKpQCcDRymhq3QSoU4XuqgxrQFMxG8FVgAiIzHfah7LcQiAYTjRsjwqAMtxCICyckvmtzlbS0SL59ezBn17wJL5UADWzG/zhZSQNfPbfCEAXD0Q0UYLAGslSovWTNn6fmdiVw/I2Lo+NX4HwJr59ICiwe4o4eqBCBMfxgPzfKZpulOp4d5xWBeC3wdcSyjCA2rj7QhwPUqIiPuNrAP7z6l1I8MHQISpQLkTSwLwqHA9Zz1K4HsAvgulB/R69Yj4eABeAXgPwAOALyF0AB4dIirnUf7QRPFl/51UwJ7TtoypQBtf9tHwCjwBNBJ+QJK7H5cAAAAASUVORK5CYII=");
+}
+.pay-phone-number-email .country-dropdown button.flag.DE::before {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAALFJREFUaEPtmUEOwCAIBOFP/f8L+id7aPQsIkHM9AyrzJB4qErxT4vfXxgg2yAGMOAkcM0KNSeIrHbtBhggSQEGksCPYzGAAScBVsgJ0N1+iYEmUvIlVpHfAAO4V3ktAANr3PZ1YWAfy7UkDKxx29d1kYG36Ev89JeYAfbttSVJMWDBFVCLgQCopkgMmHAFFGMgAKopchgwdR1WfM0fmsO4zl8HA/OsYioxEMN1PrW8gQ9ioEAxHcg5vwAAAABJRU5ErkJggg==");
+}
+.pay-phone-number-email .country-dropdown button.flag.CH::before {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAMxJREFUaEPtmO0OgCAIRfH9H9q21tZWCSKafZx+Y8I9F1glefmTXp6/UMBsghCAQFCB71soi+SgSKHjSfRJaRKggJD+q/yqyBAICmweh8A/mzgXJm8yW+5kqTkWooAdBASamhgL3WWhktLmejoEKNNpbA9QwEYCAopn1SmEhWZbqESOPXDXHoCAvfHGLjIIPJWAnVd1xBwLVadnB1JA0weNLWx1BAQgUG2W68CwhYL3Dz/u/1U2PCXfBRTg06t/NAT6a+p7IwR8evWPXgBIcWQxRrrRFQAAAABJRU5ErkJggg==");
+}
+.pay-phone-number-email .country-dropdown button.flag.CA::before {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAgJJREFUaEPtWEF2AUEULOtkwQ3YJSt2yQ434AS4ASfACbgBTsANsEt2rJIdN2CRrOVVWjOZNNNjpHsm+r83q/6jq37V798mhYRHKuH44QjYVtAp4BSIWIH/YaGPh6edbiHu3l50Uy/K+3x81n7v/v019a2AI6Bds+BEp0BQjW6rByYTUY9KJaguh/V4WSiXE8BWqwQR2G6BdBoYDoFGQwAfDIB6HZBrZ+jYVyCTEWBpn/VaQM1mhY1IarM5q4Z9AuUyMJupQZZKwHQacwKtFtDvq0E2m0CvFxMCtAetwVgsAAJndb3e90OVvUCVSKRQEBme3zJnIVlp2oIA+ND7tRpAgKogwdFIkCR4Njvt5lHGHAE2abX6GyabVZ7//tVTa+PxYVaYI0Bw4i4YPXbHy7A5ArQBbcSzPUrQRuwH2g+AOQK0zymrhCVEa9FGRglwt04H6HbDwv2Z326L39mHOQXkjlSBV4awVqJ1eKz6LnrmCcg5QBKcBzrBI5Tg5RzwvGOHAAHwPD91/vtJcR5wfijCHgE5gTmd+RSLwHIpIObzwHx+HHhyIseKgKqcvBOxNzxNGuQwewqokEngjoBat7//LpR4BdjYjP01Icj/5iexDqKQOfFq4pDgnQI6BbutL3M6FfHlXNQDF+wTm1eu9J/QHh9HwF7txc5OAadAxAok3kJfiiJaQH+XrD4AAAAASUVORK5CYII=");
+}
+.pay-phone-number-email input {
+  border: solid 1px #F5F5F5;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  caret-color: #263f73;
+  width: 100%;
+}
+.pay-phone-number-email ul.sellers {
+  list-style: none;
+  margin: 2rem 0;
+  padding: 0;
+}
+.pay-phone-number-email ul.sellers li {
+  border-radius: 10px;
+  padding: 10px;
+  margin: 1rem 0;
+  background: #2da69a;
+}
+.pay-phone-number-email ul.sellers li p {
+  display: inline-block;
+  width: 70%;
+  line-height: 2.5rem;
+  margin-bottom: 0;
+  text-align: left;
+}
+.pay-phone-number-email ul.sellers li button {
+  width: 30%;
+  font-size: 1rem;
+  box-shadow: #000 1px 1px 2px;
 }
 button.icon {
   position: relative;

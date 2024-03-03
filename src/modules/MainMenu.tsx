@@ -21,9 +21,9 @@ function MainMenu() {
                 </div>
                 <div className="col-6 tile">
                     <a onClick={()=>{
-                        navigate("/set-phone-number");
+                        navigate("/pay-phone-number-email");
                     }}>
-                        <p className="icon phone">Pay a Phone number</p>
+                        <p className="icon phone">Pay Phone Number / Email</p>
                     </a>
                 </div>
                 <div className="col-6 tile">

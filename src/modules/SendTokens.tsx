@@ -4,28 +4,27 @@ import PaymentSuccess from "./PaymentSuccess";
 import { SERVER_URL } from "../utils/constants";
 import { useAuth } from '../contexts/AuthContext';
 
-const SendTokens = (props) => {
+const SendTokens = ({
+    toUserId,
+    sellerName = '',
+    amount,
+    cancelAction,
+}) => {
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState(false);
     const [note, setNote] = useState('');
-    const [amount, setAmount] = useState(props.amount);
+    const [payAmount, setPayAmount] = useState(amount);
     const { currentUser } = useAuth();
     const { accessToken } = currentUser;
 
     const navigate = useNavigate();
-    const {
-        userId,
-        sellerName,
-        toEmailId,
-        toPhoneNumber,
-    } = props;
 
     const updateNote = (e) => {
         setNote(e.target.value);
     }
 
-    const updateAmount = (e) => {
-        setAmount(e.target.value);
+    const updatePayAmount = (e) => {
+        setPayAmount(e.target.value);
     }
 
     const paySeller = () => {
@@ -36,14 +35,11 @@ const SendTokens = (props) => {
                 'Authorization': `Bearer ${accessToken}`
             },
             body: JSON.stringify({
-                toUserId: userId,
-                toEmailId,
-                toPhoneNumber,
+                toUserId,
                 amount,
                 note,
             }),
-        }).then((response) => {
-            console.log(response);
+        }).then(() => {
             setSuccess(true);
         }).catch((err) => {
             setError(true);
@@ -52,7 +48,7 @@ const SendTokens = (props) => {
     }
 
     if (success) {
-        return (<PaymentSuccess sellerName={sellerName} amount={amount} />)
+        return (<PaymentSuccess sellerName={sellerName} amount={payAmount} />)
     }
 
     return (
@@ -64,11 +60,15 @@ const SendTokens = (props) => {
             }
             <h3>Paying {sellerName}</h3>
             <span className="token-logo">$</span>
-            <input type="number" className="amount" defaultValue={amount} onChange={updateAmount} />
+            <input type="number" className="amount" defaultValue={amount} onChange={updatePayAmount} />
             <input type="text" className="note" placeholder="Add a note" defaultValue={note} onChange={updateNote} />
-            <button id="sendTokens" className="pay" onClick={paySeller}>Pay</button>
+            <button className="pay" onClick={paySeller}>Pay</button>
             <a href="#" className="cancel" onClick={()=>{
-                navigate("/");
+                if (cancelAction) {
+                    cancelAction();
+                } else {
+                    navigate("/");
+                }
             }}>Cancel</a>
         </div>
     )
