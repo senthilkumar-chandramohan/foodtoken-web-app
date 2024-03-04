@@ -120,7 +120,7 @@ const PayPhoneNumberEmail = () => {
           <div className="phone container">
             <div className="row">
               <div className="col-4">
-                <CountryDropdown countryCode={countryCode} callingCode={callingCode} setCountryCode={setCountryCode} setCallingCode={setCallingCode} loadSellers={loadSellers} />
+                <CountryDropdown countryCode={countryCode} callingCode={callingCode} setCountryCode={setCountryCode} setCallingCode={setCallingCode} />
               </div>
               <div className="col-8">
                 <input className="phone" maxLength={10} type="tel" onKeyUp={loadSellers} value={phoneNumber} onChange={loadSellers} placeholder="Start typing..." />

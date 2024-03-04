@@ -53,7 +53,7 @@ function ScanQRC() {
     
         if (userId?.length) {
             return (
-                <SendTokens toUserId={userId} sellerName={sellerName} amount={amount} />
+                <SendTokens toUserId={userId} sellerName={sellerName} amount={amount} cancelAction={null} />
             )
         }
     }
