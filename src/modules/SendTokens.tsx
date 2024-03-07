@@ -28,7 +28,7 @@ const SendTokens = ({
     }
 
     const paySeller = () => {
-        fetch(`${SERVER_URL}/api/consumer/send-token`, {
+        fetch(`${SERVER_URL}/api/consumer/token`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
