@@ -36,7 +36,7 @@ const SendTokens = ({
             },
             body: JSON.stringify({
                 toUserId,
-                amount,
+                amount: payAmount,
                 note,
             }),
         }).then(() => {
