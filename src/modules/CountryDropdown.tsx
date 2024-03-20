@@ -1,33 +1,42 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import codes from 'country-calling-code';
 
 const CountryDropdown = ({countryCode, callingCode, setCountryCode, setCallingCode}) => {
   const [showDropdown, setShowDropdown] = useState(false); 
+  const dropdownRef = useRef<HTMLSelectElement>(null);
 
   const updateCountrySelection = (e) => {
     const dropdown = e.target;
-    setCallingCode(dropdown.value);
+    setCountryCode(dropdown.value);
 
     if (dropdown.selectedOptions) {
-      setCountryCode(dropdown.selectedOptions[0].getAttribute('data-country-code'));
+      setCallingCode(dropdown.selectedOptions[0].getAttribute('data-calling-code'));
     } else {
-      setCountryCode(dropdown.getAttribute('data-country-code'));
+      setCallingCode(dropdown.getAttribute('data-calling-code'));
     }
-    setShowDropdown(false);
+    toggleCountrySelection();
   }
 
   const toggleCountrySelection = () => {
     setShowDropdown(!showDropdown);
   }
 
+  useEffect(() => {
+    // Focus the dropdown when it's rendered
+    if (dropdownRef.current) {
+      dropdownRef.current.focus();
+    }
+  }); // Empty dependency array ensures this effect runs only once after the component is mounted
+
+
   return (
     <div className="country-dropdown container">
       <button className={`flag ${countryCode}`} onClick={toggleCountrySelection}>+{callingCode}</button>
       {
         showDropdown &&
-          <select size={10} className="country" value={callingCode} onClick={updateCountrySelection} onBlur={updateCountrySelection} onChange={updateCountrySelection}>
-            { codes.map(code => <option key={code.country} value={code.countryCodes[0]} data-country-code={code.isoCode2}>{code.country} ({code.countryCodes[0]})</option>) }
-          </select> 
+          <select ref={dropdownRef} size={10} className="country" value={countryCode} onClick={updateCountrySelection} onBlur={updateCountrySelection} onChange={updateCountrySelection}>
+            { codes.map(code => <option key={code.country} value={code.isoCode2} data-calling-code={code.countryCodes[0]}>{code.country} ({code.countryCodes[0]})</option>) }
+          </select>
       }
     </div>
   )

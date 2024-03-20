@@ -112,8 +112,16 @@ const PayPhoneNumberEmail = () => {
 
   return (
     <div className="pay-phone-number-email">
-      <button className={`tab ${showPhone?'active':''}`} onClick={()=>setShowPhone(true)}>Phone Number</button>
-      <button className={`tab ${!showPhone?'active':''}`} onClick={()=>setShowPhone(false)}>Email Address</button>
+      <div className="container">
+        <div className="row">
+          <div className="col-6">
+            <button className={`tab ${showPhone?'active':''}`} onClick={()=>setShowPhone(true)}>Phone</button>
+          </div>
+          <div className="col-6">
+            <button className={`tab ${!showPhone?'active':''}`} onClick={()=>setShowPhone(false)}>Email</button>
+          </div>
+        </div>
+      </div>
 
       {
         showPhone &&

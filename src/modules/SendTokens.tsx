@@ -52,24 +52,47 @@ const SendTokens = ({
     }
 
     return (
-        <div id="send-tokens" className="send-tokens">
+        <div id="send-tokens" className="send-tokens container">
             {
                 error
                 ?<div className="error">Error while paying seller, please try again</div>
                 :<></>
             }
-            <h3>Paying {sellerName}</h3>
-            <span className="token-logo">$</span>
-            <input type="number" className="amount" defaultValue={amount} onChange={updatePayAmount} />
-            <input type="text" className="note" placeholder="Add a note" defaultValue={note} onChange={updateNote} />
-            <button className="pay" onClick={paySeller}>Pay</button>
-            <a href="#" className="cancel" onClick={()=>{
-                if (cancelAction) {
-                    cancelAction();
-                } else {
-                    navigate("/");
-                }
-            }}>Cancel</a>
+            <div className="row">
+                <div className="col-12">
+                    <h3>Paying {sellerName}</h3>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col-12" style={{position: "relative"}}>
+                    <div className="amount-container" data-currency="$">
+                        <input type="tel" className="amount" defaultValue={amount} onChange={updatePayAmount} maxLength={5} />
+                    </div>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col-12">
+                    <input type="text" className="note" placeholder="Add a note" defaultValue={note} onChange={updateNote} maxLength={25} />
+                </div>
+            </div>
+            <div className="row">
+                <div className="col-12">
+                    <button className="pay" onClick={paySeller}>Pay</button>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col-12">
+                    <a href="#" className="cancel" onClick={()=>{
+                        if (cancelAction) {
+                            cancelAction();
+                        } else {
+                            navigate("/");
+                        }
+                    }}>
+                        Cancel
+                    </a>
+                </div>
+            </div>
         </div>
     )
 };

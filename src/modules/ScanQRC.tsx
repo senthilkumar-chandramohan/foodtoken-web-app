@@ -23,7 +23,12 @@ function ScanQRC() {
     }
 
     const detectCamera = async () => {
-        await navigator.mediaDevices.getUserMedia({ audio: false, video: true });
+        await navigator.mediaDevices.getUserMedia({
+            audio: false,
+            video: {
+                facingMode: { exact: "environment" },
+            },
+        });
         await navigator.mediaDevices.enumerateDevices();
     
         setPermissionGranted(true);
@@ -65,6 +70,7 @@ function ScanQRC() {
                 onScan={handleScan}
                 style={previewStyle}
                 facingMode="rear"
+                legacyMode="true"
                 // constraints={ {facingMode: 'environment'} }
                 // constraints={{
                 //     facingMode: {

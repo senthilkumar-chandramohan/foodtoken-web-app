@@ -8,10 +8,12 @@ const TransactionHistory = () => {
     const { currentUser } = useAuth();
     const { accessToken } = currentUser;
 
+    const defaultDP = "data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjU2IDI1NiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBmaWxsPSJub25lIiBkPSJNMCAwaDI1NnYyNTZIMHoiPjwvcGF0aD48cGF0aCBkPSJNMTI4IDMyYTk2IDk2IDAgMCAwLTY0LjIgMTY3LjRBNzIgNzIgMCAwIDEgMTI4IDE2MGE0MCA0MCAwIDEgMSA0MC00MCA0MCA0MCAwIDAgMS00MCA0MCA3MiA3MiAwIDAgMSA2NC4yIDM5LjRBOTYgOTYgMCAwIDAgMTI4IDMyWiIgb3BhY2l0eT0iLjIiIGZpbGw9IiNmNWY1ZjUiIGNsYXNzPSJmaWxsLTAwMDAwMCI+PC9wYXRoPjxjaXJjbGUgY3g9IjEyOCIgY3k9IjEyOCIgZmlsbD0ibm9uZSIgcj0iOTYiIHN0cm9rZT0iI2Y1ZjVmNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjE2IiBjbGFzcz0ic3Ryb2tlLTAwMDAwMCI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMTI4IiBjeT0iMTIwIiBmaWxsPSJub25lIiByPSI0MCIgc3Ryb2tlPSIjZjVmNWY1IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMTYiIGNsYXNzPSJzdHJva2UtMDAwMDAwIj48L2NpcmNsZT48cGF0aCBkPSJNNjMuOCAxOTkuNGE3MiA3MiAwIDAgMSAxMjguNCAwIiBmaWxsPSJub25lIiBzdHJva2U9IiNmNWY1ZjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxNiIgY2xhc3M9InN0cm9rZS0wMDAwMDAiPjwvcGF0aD48L3N2Zz4=";
+
     useEffect(() => {
         const fetchData = ()=> {
             if (history.length === 0) {
-                fetch(`${SERVER_URL}/api/common/get-txn-history`, {
+                fetch(`${SERVER_URL}/api/common/txn-history`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -32,7 +34,6 @@ const TransactionHistory = () => {
         };
 
         fetchData();
-
         console.log("history", history);
     });
 
@@ -44,32 +45,37 @@ const TransactionHistory = () => {
                         history.length === 0 ?
                         <p>Loading Transaction History...</p> :
                         <>
-                            <h2>Transaction History</h2>
+                            <h3>Transaction History</h3>
                             <table>
-                                <tr>
-                                    <th>Date/Time</th>
-                                    <th>Type</th>
-                                    <th>Credit From/Payment to</th>
-                                    <th>Amount</th>
-                                    <th>Txn Details</th>
-                                </tr>
                                 {
                                     history.map((transaction) => {
                                         const {
                                             timeStamp,
                                             txnType,
                                             to,
+                                            from,
                                             value,
                                             hash,
                                         } = transaction;
 
                                         return (
                                             <tr>
-                                                <td>{moment(parseInt(timeStamp)*1000).format("DD-MM-YYYY h:mm:ss A")}</td>
-                                                <td>{txnType}</td>
-                                                <td>{txnType === 'debit' ? to : 'EMPLOYER'}</td>
-                                                <td>{value}</td>
-                                                <td><a href={`https://mumbai.polygonscan.com/tx/${hash}`} target="_blank">Link</a></td>
+                                                <td>
+                                                    <a href={`https://mumbai.polygonscan.com/tx/${hash}`} target="_blank">
+                                                        <img className="dp" src={to ? to.picture || defaultDP : from.picture || defaultDP} />
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <p className="name">{to ? to.name : from.name}</p>
+                                                    <p className="date-time">{moment(parseInt(timeStamp)*1000).format("MMM DD, YYYY - h:mm A")}</p>
+                                                </td>
+                                                <td>
+                                                    {
+                                                        txnType === 'credit' ?
+                                                        <span className="green bold credit">${value}</span> : 
+                                                        `$` + value
+                                                    }
+                                                </td>
                                             </tr>
                                         )
                                     })

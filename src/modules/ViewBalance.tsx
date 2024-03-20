@@ -19,7 +19,7 @@ const ViewBalance = () => {
     const fetchData = (accessToken) => {
         console.log(accessToken);
 
-        fetch(`${SERVER_URL}/api/common/get-balance`, {
+        fetch(`${SERVER_URL}/api/common/token-balance`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -39,15 +39,16 @@ const ViewBalance = () => {
     return (
         <div className="container">
             <div className="row">
-                <div className="col-xs-12">
-                    Your Balance: <span className="token-logo">$ {balance}</span>
+                <div className="col-xs-12 center">
+                    <h3>Wallet Balance</h3>
+                    <p className="wallet-balance">$ {balance}</p>
                 </div>
             </div>
             <div className="row">
-                <div className="col-xs-12">
+                <div className="col-xs-12 center txn-history">
                     {
                         !showTransactions ?
-                        <button onClick={()=>{setShowTransactions(true)}}>Show Transactions</button>:
+                        <button className="center-div" onClick={()=>{setShowTransactions(true)}}>Show Transactions</button>:
                         <TransactionHistory />
                     }
                 </div>

@@ -16,7 +16,7 @@ allowNotificationsBtn.addEventListener('click', () => {
                     let sw = await navigator.serviceWorker.ready;
                     console.log("sw", sw);
 
-                    const response = await fetch(`${SERVER_URL}/api/common/get-app-server-key`, {
+                    const response = await fetch(`${SERVER_URL}/api/common/app-server-key`, {
                         method: 'GET',
                         headers: {
                             'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ allowNotificationsBtn.addEventListener('click', () => {
                     });
                     console.log("sub", sub);
         
-                    fetch(`${SERVER_URL}/api/common/add-subscription`, {
+                    fetch(`${SERVER_URL}/api/common/subscription`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
