@@ -1,10 +1,10 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect } from 'react';
 import QRCode from 'react-qr-code';
 import { useScreenshot } from 'use-react-screenshot';
 
 const GenerateQRC = ({ sellerName, userId, amount = '' }) => {
     const ref = useRef(null);
-    const [errorMessage, setErrorMessage] = useState('');
+    // const [errorMessage, setErrorMessage] = useState('');
     const [image, takeScreenshot] = useScreenshot();
     const getImage = () => takeScreenshot(ref.current);
 
@@ -43,11 +43,11 @@ const GenerateQRC = ({ sellerName, userId, amount = '' }) => {
       
 
     const nativeShare = () => {
-        if (navigator.canShare) {
+        // if (navigator.canShare) {
             shareBase64Image(image.substr(22), 'image.png');
-        } else {
-            setErrorMessage("Native sharing not supported by your browser!");
-        }
+        // } else {
+        //     setErrorMessage("Native sharing not supported by your browser!");
+        // }
     }
 
     useEffect(() => {
@@ -71,10 +71,10 @@ const GenerateQRC = ({ sellerName, userId, amount = '' }) => {
                     image && 
                     <button className="icon share" onClick={nativeShare}>Share QR Code</button>
                 }
-                {
+                {/* {
                     errorMessage &&
                     <p className="error">{errorMessage}</p>
-                }
+                } */}
             </div>
         </>
     )

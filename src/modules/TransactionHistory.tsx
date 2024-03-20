@@ -52,8 +52,10 @@ const TransactionHistory = () => {
                                         const {
                                             timeStamp,
                                             txnType,
-                                            to,
-                                            from,
+                                            secondParty: {
+                                                name,
+                                                picture,
+                                            },
                                             value,
                                             hash,
                                         } = transaction;
@@ -62,11 +64,11 @@ const TransactionHistory = () => {
                                             <tr>
                                                 <td>
                                                     <a href={`https://mumbai.polygonscan.com/tx/${hash}`} target="_blank">
-                                                        <img className="dp" src={to ? to.picture || defaultDP : from.picture || defaultDP} />
+                                                        <img className="dp" src={picture || defaultDP} />
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <p className="name">{to ? to.name : from.name}</p>
+                                                    <p className="name">{name}</p>
                                                     <p className="date-time">{moment(parseInt(timeStamp)*1000).format("MMM DD, YYYY - h:mm A")}</p>
                                                 </td>
                                                 <td>
