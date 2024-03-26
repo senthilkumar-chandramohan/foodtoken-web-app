@@ -38,6 +38,10 @@ button {
     font-weight: bold;
 }
 
+.dark-text {
+    color: @text;
+}
+
 .green {
     color: @Spring-Blossoms-Colorful-3-rgba;
 }
@@ -231,6 +235,14 @@ p.icon {
     min-height: 500px;
     min-width: 350px;
     font-size: 1.25rem;
+
+    input[type=email], input[type=tel] {
+        background-color: @white;
+    }
+
+    select {
+        height: 200px;
+    }
 
     button {
         &.tab {

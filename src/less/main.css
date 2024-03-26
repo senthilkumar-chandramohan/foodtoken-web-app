@@ -23,6 +23,9 @@ button {
 .bold {
   font-weight: bold;
 }
+.dark-text {
+  color: #040404;
+}
 .green {
   color: #2da69a;
 }
@@ -173,6 +176,13 @@ p.icon.transactions::before {
   min-height: 500px;
   min-width: 350px;
   font-size: 1.25rem;
+}
+.pay-phone-number-email input[type=email],
+.pay-phone-number-email input[type=tel] {
+  background-color: #F5F5F5;
+}
+.pay-phone-number-email select {
+  height: 200px;
 }
 .pay-phone-number-email button.tab {
   border-radius: 10px;
