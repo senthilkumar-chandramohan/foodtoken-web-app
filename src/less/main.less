@@ -241,6 +241,29 @@ p.icon {
         color: @text;
     }
 
+    .country {
+        height: 300px;
+        width: 300px;
+        overflow: auto;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        text-align: left;
+        list-style: none;
+        background: @white;
+        color: @text;
+        padding: 0;
+        cursor: pointer;
+
+        li {
+            padding: 0.5rem;
+            &.selected {
+                background: @text;
+                color: @white;
+            }
+        }
+    }
+
     select {
         height: 200px;
     }
@@ -262,13 +285,6 @@ p.icon {
 
     .country-dropdown {
         position: relative;
-        
-        select {
-            position: absolute;
-            z-index: 999;
-            top: 50px;
-            left: 0;
-        }
 
         button.flag {
             color: @white;
@@ -296,7 +312,7 @@ p.icon {
                     background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAehJREFUaEPtmE1LQkEYhc9oEeamFLUWQSAKkqIW7t20z9bqSvAv9BPa66ZVC++yFrly409I8Av6kFDadUWsRXLhfsSMIEXRZkavysx+3nmfc86dd7gEK77IivcPCWC3g9IB6QCnAusRIevqxOIUwpbtpHhPmAMSwBb9AemATcLPjpUOSAc4FZAR4hSQe/saOWBZwp8ShmFhNPoErez1bsPpFP/sInSxp4RggH7/HdfXLRiGyWJCiAP5fBSh0C53bL4XmAvA6+sHSqUG0ukDJBIBdl67raJeH6BYTCAY3BEGIRxA0wxUq8+YTHSkUvu4uXlkzWYyYTSbb3A4CM7OQnC5NoRACAcYjzUoSgfJ5B46HRWK0oVpmshmo4jFfMyJ8/MwAgH3MgN0cXwcYIpXKh2YJlj+43E/Wq235QagEbq7e4KmmUgm/bi9pRGaxqbbHc7itLQRoh0OBu8olxs4PT3E0ZEP9KJ7eBiiVntBoRBHOOwREp/p7Tana7TXG7Nr1Omk44VA1y3kclFEIl5hzc8VgBbXdROqSgeZBZ/Pjc1Nh9DmfwB4LreET2Lh3f5RcHShTSexBFiE3NIBm1T+71j5DdhtinRAOsCpwPpEiFMIW7eL/1WwYBwJsGDBfx0nHZAOcCqw8hH6Aq1K/TFZPXqwAAAAAElFTkSuQmCC");
                 }
             }
-            &.IR {
+            &.IE {
                 &::before {
                     background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAJdJREFUaEPt2VENgDAMBNBVHkIwgQE8IAR7EJiDjqQZefw3ae9ut+uINvkXk/ffDFDNIAYwMIjATyR0LFcWiGs9s6W9bstjGHuLXm2AARIwQEIOcfoAcaEHOvcAG2WjbJSNSqNpDdgHLDSihJ3YUi9Oi9PitDidjlJeJbxKfBan0yqsL8z/Xajv/e3AANVEYAADgwhML6EbEWCgMR0e3hsAAAAASUVORK5CYII=");
                 }
