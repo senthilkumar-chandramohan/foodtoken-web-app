@@ -28,9 +28,7 @@ function ScanQRC() {
         try {
             await navigator.mediaDevices.getUserMedia({
                 audio: false,
-                video: {
-                    facingMode: { exact: "environment" },
-                },
+                video: true,
             });
         } catch(err) {
             setErrorMessage("Unable to open rear camera!, using front camera.");
@@ -84,15 +82,12 @@ function ScanQRC() {
                 onError={handleError}
                 onScan={handleScan}
                 style={previewStyle}
-                facingMode={"environment"}
                 legacyMode={true}
-                // constraints={ {facingMode: 'environment'} }
-                // constraints={{
-                //     facingMode: {
-                //         exact: 'environment'
-                //     }
-                // }}
-                // key="environment"
+                constraints={{
+                    video: {
+                        facingMode: { exact: "environment" },
+                    }
+                }}
             />
             { errorMessage && 
                 <p className="center error">{errorMessage}</p>

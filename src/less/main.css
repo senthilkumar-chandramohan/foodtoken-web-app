@@ -29,9 +29,6 @@ button {
 .dark-text {
   color: #040404;
 }
-.green {
-  color: #2da69a;
-}
 .blueBG {
   background: #263f73;
 }
@@ -387,8 +384,17 @@ button.icon.share::before {
   width: 36px;
   border-radius: 36px;
 }
+.credit {
+  color: #2da69a;
+}
 .credit::before {
   content: "+";
+}
+.debit {
+  color: rgba(255, 0, 0, 0.75);
+}
+.debit::before {
+  content: "-";
 }
 .footer {
   color: #F5F5F5;

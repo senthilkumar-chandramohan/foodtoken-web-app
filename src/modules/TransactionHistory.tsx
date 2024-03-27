@@ -86,11 +86,7 @@ const TransactionHistory = () => {
                                                         <p className="date-time">{moment(parseInt(timeStamp)*1000).format("h:mm A")}</p>
                                                     </td>
                                                     <td>
-                                                        {
-                                                            txnType === 'credit' ?
-                                                            <span className="green bold credit">${value}</span> : 
-                                                            `$` + value
-                                                        }
+                                                        <p className={`bold ${txnType}`}>${value}</p>
                                                     </td>
                                                 </tr>
                                             </>

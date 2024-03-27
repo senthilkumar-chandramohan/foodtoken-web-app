@@ -46,10 +46,6 @@ button {
     color: @text;
 }
 
-.green {
-    color: @Spring-Blossoms-Colorful-3-rgba;
-}
-
 .blueBG {
     background: @Spring-Blossoms-Colorful-1-rgba;
 }
@@ -498,8 +494,18 @@ button.icon {
 }
 
 .credit {
+    color: @Spring-Blossoms-Colorful-3-rgba;
+    
     &::before {
         content: "+";
+    }
+}
+
+.debit {
+    color: @error;
+
+    &::before {
+        content: "-";
     }
 }
 
