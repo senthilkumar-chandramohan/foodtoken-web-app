@@ -37,6 +37,9 @@ const TransactionHistory = () => {
         console.log("history", history);
     });
 
+    let lastTxnDate = moment(Date.now()+100000000).format("MMM DD, YYYY"); // Future date
+    console.log("last txn date", lastTxnDate);
+
     return (
         <div className="container">
             <div className="row">
@@ -60,25 +63,37 @@ const TransactionHistory = () => {
                                             hash,
                                         } = transaction;
 
+                                        let dateHeader;
+
+                                        if (lastTxnDate !== moment(parseInt(timeStamp)*1000).format("MMM DD, YYYY")) {
+                                            lastTxnDate = moment(parseInt(timeStamp)*1000).format("MMM DD, YYYY");
+                                            dateHeader = <tr><td className="date-header" colSpan={3}>{lastTxnDate}</td></tr>;
+                                        } else {
+                                            dateHeader = <></>;
+                                        }
+
                                         return (
-                                            <tr>
-                                                <td>
-                                                    <a href={`https://mumbai.polygonscan.com/tx/${hash}`} target="_blank">
-                                                        <img className="dp" src={picture || defaultDP} />
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <p className="name">{name}</p>
-                                                    <p className="date-time">{moment(parseInt(timeStamp)*1000).format("MMM DD, YYYY - h:mm A")}</p>
-                                                </td>
-                                                <td>
-                                                    {
-                                                        txnType === 'credit' ?
-                                                        <span className="green bold credit">${value}</span> : 
-                                                        `$` + value
-                                                    }
-                                                </td>
-                                            </tr>
+                                            <>
+                                                <>{dateHeader}</>
+                                                <tr>
+                                                    <td>
+                                                        <a href={`https://mumbai.polygonscan.com/tx/${hash}`} target="_blank">
+                                                            <img className="dp" src={picture || defaultDP} />
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        <p className="name">{name}</p>
+                                                        <p className="date-time">{moment(parseInt(timeStamp)*1000).format("h:mm A")}</p>
+                                                    </td>
+                                                    <td>
+                                                        {
+                                                            txnType === 'credit' ?
+                                                            <span className="green bold credit">${value}</span> : 
+                                                            `$` + value
+                                                        }
+                                                    </td>
+                                                </tr>
+                                            </>
                                         )
                                     })
                                 }

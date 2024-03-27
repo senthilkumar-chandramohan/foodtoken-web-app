@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import QrcReader from 'react-qr-scanner';
 import SendTokens from './SendTokens';
 
 function ScanQRC() {
-    // const qrReader = useRef(null);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const qrReader:any = useRef(null);
     const [permissionGranted, setPermissionGranted] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
     const [scanData, setScanData] = useState({
         userId: '',
         sellerName: '',
@@ -23,12 +25,23 @@ function ScanQRC() {
     }
 
     const detectCamera = async () => {
-        await navigator.mediaDevices.getUserMedia({
-            audio: false,
-            video: {
-                facingMode: { exact: "environment" },
-            },
-        });
+        try {
+            await navigator.mediaDevices.getUserMedia({
+                audio: false,
+                video: {
+                    facingMode: { exact: "environment" },
+                },
+            });
+        } catch(err) {
+            setErrorMessage("Unable to open rear camera!, using front camera.");
+            await navigator.mediaDevices.getUserMedia({
+                audio: false,
+                video: {
+                    facingMode: { exact: "user" },
+                },
+            });
+        }
+
         await navigator.mediaDevices.enumerateDevices();
     
         setPermissionGranted(true);
@@ -40,10 +53,11 @@ function ScanQRC() {
         })();
     }, []);
 
-    // const openImageDialog = () => {
-    //     console.log(qrReader);
-    //     qrReader.current.openImageDialog();
-    // }
+    const openImageDialog = () => {
+        if (qrReader.current) {
+            qrReader.current.openImageDialog();
+        }
+    }
 
     const previewStyle = {
         width: '100%'
@@ -66,11 +80,12 @@ function ScanQRC() {
     return permissionGranted ? (
         <div>
             <QrcReader
+                ref={qrReader}
                 onError={handleError}
                 onScan={handleScan}
                 style={previewStyle}
-                facingMode="rear"
-                legacyMode="true"
+                facingMode={"environment"}
+                legacyMode={true}
                 // constraints={ {facingMode: 'environment'} }
                 // constraints={{
                 //     facingMode: {
@@ -79,7 +94,10 @@ function ScanQRC() {
                 // }}
                 // key="environment"
             />
-            {/* <button id="uploadFromGallery" onClick={openImageDialog}>Upload QR Image</button> */}
+            { errorMessage && 
+                <p className="center error">{errorMessage}</p>
+            }
+            <button id="uploadFromGallery" onClick={openImageDialog}>Upload QR Image</button>
         </div>
     )
     :

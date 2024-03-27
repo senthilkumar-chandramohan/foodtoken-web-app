@@ -72,7 +72,7 @@ const SendTokens = ({
             </div>
             <div className="row">
                 <div className="col-12">
-                    <input type="text" className="note" placeholder="Add a note" defaultValue={note} onChange={updateNote} maxLength={25} />
+                    <input type="text" className="note" placeholder="Note" defaultValue={note} onChange={updateNote} maxLength={25} />
                 </div>
             </div>
             <div className="row">
