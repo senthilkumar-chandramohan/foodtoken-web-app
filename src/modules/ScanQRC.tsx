@@ -29,7 +29,7 @@ function ScanQRC() {
             await navigator.mediaDevices.getUserMedia({
                 audio: false,
                 video: {
-                    facingMode: { exact: "environment" },
+                    facingMode: { exact: "user" },
                 },
             });
         } catch(err) {
@@ -37,7 +37,7 @@ function ScanQRC() {
             await navigator.mediaDevices.getUserMedia({
                 audio: false,
                 video: {
-                    facingMode: { exact: "user" },
+                    facingMode: { exact: "environment" },
                 },
             });
         }
