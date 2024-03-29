@@ -3,7 +3,7 @@ import { Html5QrcodeScanner } from 'html5-qrcode';
 import SendTokens from './SendTokens';
 
 function ScanQRCode() {
-    const [errorMessage, setErrorMessage] = useState('');
+    // const [errorMessage, setErrorMessage] = useState('');
     const [scanData, setScanData] = useState({
         userId: '',
         sellerName: '',
@@ -66,9 +66,9 @@ function ScanQRCode() {
             <div className="col-12">
                 <div id="qr-reader" style={{minWidth:"320px", width: "100%"}}></div>
                 <div id="qr-reader-results"></div>
-                { errorMessage && 
+                {/* { errorMessage && 
                     <p className="center error">{errorMessage}</p>
-                }
+                } */}
             </div>
         </div>
     );

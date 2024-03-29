@@ -11,7 +11,7 @@ import { useAuth } from './contexts/AuthContext';
 
 import Login from './modules/Login';
 import MainMenu from './modules/MainMenu';
-import ScanQRC from './modules/ScanQRC';
+// import ScanQRC from './modules/ScanQRC';
 import ScanQRCode from './modules/ScanQRCode';
 import GenerateQRC from './modules/GenerateQRC';
 import PayPhoneNumberEmail from './modules/PayPhoneNumberEmail';
