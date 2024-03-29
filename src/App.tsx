@@ -12,6 +12,7 @@ import { useAuth } from './contexts/AuthContext';
 import Login from './modules/Login';
 import MainMenu from './modules/MainMenu';
 import ScanQRC from './modules/ScanQRC';
+import ScanQRCode from './modules/ScanQRCode';
 import GenerateQRC from './modules/GenerateQRC';
 import PayPhoneNumberEmail from './modules/PayPhoneNumberEmail';
 import ViewBalance from './modules/ViewBalance';
@@ -26,7 +27,7 @@ function App() {
             <BrowserRouter>
               <Routes>
                 <Route path="/" element={<MainMenu />} />
-                <Route path="/scan-qrc" element={<ScanQRC />} />
+                <Route path="/scan-qrc" element={<ScanQRCode />} />
                 <Route path="/pay-phone-number-email" element={<PayPhoneNumberEmail />} />
                 <Route path="/view-balance" element={<ViewBalance />} />
                 <Route path="/generate-qrc" element={<GenerateQRC sellerName={currentUser.displayName} userId={currentUser.uid} />} />
