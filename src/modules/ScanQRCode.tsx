@@ -33,7 +33,7 @@ function ScanQRCode() {
                     fps: 10,
                     qrbox: 250,
                     videoConstraints: {
-                        facingMode: { exact: "user" },
+                        facingMode: { exact: "environment" },
                     }
                 },
                 false
