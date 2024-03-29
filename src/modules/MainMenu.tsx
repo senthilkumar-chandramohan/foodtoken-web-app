@@ -23,7 +23,7 @@ function MainMenu() {
                     <a onClick={()=>{
                         navigate("/pay-phone-number-email");
                     }}>
-                        <p className="icon phone">Pay Phone Number / Email</p>
+                        <p className="icon phone">Pay Phone<br />or Email</p>
                     </a>
                 </div>
                 <div className="col-6 tile">
