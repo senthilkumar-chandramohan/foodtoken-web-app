@@ -38,6 +38,9 @@ const SignupForm = () => {
                 window.user = {
                     accessToken,
                     country,
+                    displayName,
+                    email,
+                    photoURL,
                 };
 
                 setUserLoggedIn(true);

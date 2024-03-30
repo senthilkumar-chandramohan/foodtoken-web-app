@@ -36,13 +36,21 @@ export const AuthContextProvider = ({ children }) => {
                         const {
                             country
                         } = data;
+                        const {
+                            displayName,
+                            email,
+                            photoURL,
+                        } = user;
 
                         window.user = {
                             accessToken,
                             country,
+                            displayName,
+                            email,
+                            photoURL,
                         }
 
-                        console.log(user, country);
+                        // console.log(user, country);
                         setCurrentUser({ ...user });
                         setUserLoggedIn(true);        
                     });

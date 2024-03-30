@@ -3,7 +3,10 @@ declare global {
        user: {
          accessToken: string,
          ip: string,
-         country,
+         country: string,
+         displayName: string,
+         email: string,
+         photoURL: string
        }
     }
  }
