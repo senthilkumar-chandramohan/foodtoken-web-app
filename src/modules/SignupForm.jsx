@@ -1,10 +1,12 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { SERVER_URL } from '../utils/constants';
 
+import Loader from "./Loader";
+
 const SignupForm = () => {
     const { currentUser, setUserLoggedIn } = useAuth();
-    // const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(false);
     const phoneRef = useRef(null);
 
     const {
@@ -18,6 +20,7 @@ const SignupForm = () => {
     const handleFormSubmit = (e) => {
         e.preventDefault();
 
+        setLoading(true);
         fetch(`${SERVER_URL}/api/common/signup`, {
             method: 'POST',
             headers: {
@@ -46,14 +49,24 @@ const SignupForm = () => {
                 setUserLoggedIn(true);
               });
             }
-          }).catch((err) => {
+          })
+          .catch((err) => {
             console.log(err);
+          })
+          .finally(() => {
+            setLoading(false);
           });
+    }
+
+    if (loading) {
+        return (
+            <Loader />
+        );
     }
 
     return (
         <>
-            <form onSubmit={handleFormSubmit}>
+            <form className="signup-form" onSubmit={handleFormSubmit}>
                 <div className="container">
                     <div className="row">
                         <div className="col-12">
@@ -75,14 +88,14 @@ const SignupForm = () => {
                             }
                             {
                                 !phoneNumber && (
-                                    <input ref={phoneRef} type="tel" maxLength={10} name="phone" placeholder="Provide 10-digit phone number" />
+                                    <input className="phone" ref={phoneRef} type="tel" maxLength={10} name="phone" placeholder="Provide 10-digit phone number" required />
                                 )
                             }
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-12">
-                            <input type="submit" value="Signup for an account" />
+                            <input className="btn-primary" type="submit" value="Signup for an account" />
                         </div>
                     </div>
                 </div>

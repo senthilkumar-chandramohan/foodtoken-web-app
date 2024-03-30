@@ -11,6 +11,10 @@ declare const window: any;
 interface Seller {
   id: string,
   firstName: string,
+  lastName: string,
+  phoneNumber: string,
+  email: string,
+  picture: string,
 }
 
 const PayPhoneNumberEmail = () => {
@@ -33,10 +37,10 @@ const PayPhoneNumberEmail = () => {
   const { accessToken } = currentUser;
   
   const loadSellers = (e?) => {
-    console.log(e);
+    // console.log(e);
     const value = e ? e.target.value : phoneNumber;
     let targetType;
-    console.log(callingCode + phoneNumber);
+    // console.log(callingCode + phoneNumber);
 
     if (e) {
       targetType = e.target.getAttribute('type');
@@ -135,13 +139,23 @@ const PayPhoneNumberEmail = () => {
             </div>
             <div className="row">
               <div className="col-12">
-                <ul className='sellers'>
+                <ul className="sellers">
                   {
                     phoneSellers.map((seller: Seller) => {
                       return (
                         <li key={seller.id} onClick={openSeller}>
-                          <p>{seller.firstName}</p>
-                          <button data-seller-id={seller.id} data-seller-name={seller.firstName} onClick={paySeller}>Pay</button>
+                          <div className="row">
+                            <div className="col-2">
+                              <img src={seller.picture} />
+                            </div>
+                            <div className="col-6">
+                              <p>{seller.firstName} {seller.lastName}</p>
+                              <p className="small">+{seller.phoneNumber}</p>
+                            </div>
+                            <div className="col-4">
+                              <button data-seller-id={seller.id} data-seller-name={seller.firstName} onClick={paySeller}>Pay</button>
+                            </div>
+                          </div>
                         </li>
                       )
                     })
@@ -167,8 +181,18 @@ const PayPhoneNumberEmail = () => {
                     emailSellers.map((seller: Seller) => {
                       return (
                         <li key={seller.id} onClick={openSeller}>
-                          <p>{seller.firstName}</p>
-                          <button data-seller-id={seller.id} data-seller-name={seller.firstName} onClick={paySeller}>Pay</button>
+                          <div className="row">
+                            <div className="col-2">
+                              <img src={seller.picture} />
+                            </div>
+                            <div className="col-6">
+                              <p>{seller.firstName} {seller.lastName}</p>
+                              <p className="small">{seller.email}</p>
+                            </div>
+                            <div className="col-4">
+                              <button data-seller-id={seller.id} data-seller-name={seller.firstName} onClick={paySeller}>Pay</button>
+                            </div>
+                          </div>
                         </li>
                       )
                     })

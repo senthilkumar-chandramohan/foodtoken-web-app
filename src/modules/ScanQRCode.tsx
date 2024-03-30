@@ -33,7 +33,7 @@ function ScanQRCode() {
                     fps: 10,
                     qrbox: 250,
                     videoConstraints: {
-                        facingMode: { exact: "environment" },
+                        facingMode: { exact: "user" },
                     }
                 },
                 false
@@ -45,6 +45,16 @@ function ScanQRCode() {
         } catch (err) {
             console.log(err);
         }
+
+        return () => {
+            console.log("EREERER");
+            try {
+                html5QrcodeScanner.clear();
+                html5QrcodeScanner = null;
+            } catch (err) {
+                console.log(err);
+            }
+        };
     }, []);
 
     if (scanData) {
