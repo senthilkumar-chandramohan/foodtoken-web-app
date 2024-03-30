@@ -2,13 +2,24 @@ import { useState } from "react";
 import { useNavigate  } from "react-router-dom";
 import { doSignOut } from "../firebase/auth";
 
+declare global {
+    interface Window {
+        user: {
+            displayName: string,
+            email: string,
+            photoURL: string,
+        };
+    }
+}
+
 function MainMenu() {
+    const navigate = useNavigate();
     const [sidebarVisible, setSidebarVisibility] = useState(false);
+
     const toggleSidebarVisibility = () => {
         setSidebarVisibility(!sidebarVisible);
     }
-    
-    const navigate = useNavigate();
+
     const {
         displayName,
         email,
