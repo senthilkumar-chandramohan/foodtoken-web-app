@@ -304,6 +304,7 @@ p.icon.transactions::before {
 }
 .pay-phone-number-email ul.sellers li img {
   width: 36px;
+  border-radius: 20px;
 }
 .pay-phone-number-email ul.sellers li p {
   margin-bottom: 0;

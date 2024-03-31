@@ -47,7 +47,6 @@ function ScanQRCode() {
         }
 
         return () => {
-            console.log("EREERER");
             try {
                 html5QrcodeScanner.clear();
                 html5QrcodeScanner = null;
