@@ -7,6 +7,8 @@ import { errorMessages } from '../utils/constants';
 import { useAuth } from '../contexts/AuthContext';
 import SignupForm from './SignupForm';
 
+import Loader from "./Loader";
+
 const Login = () => {
     const [ isSigningIn, setIsSigningIn ] = useState(false);
     const { errorCode } = useAuth();
@@ -18,6 +20,12 @@ const Login = () => {
                 setIsSigningIn(false);
             });
         }
+    }
+
+    if (isSigningIn) {
+        return (
+            <Loader />
+        );
     }
 
     return (
