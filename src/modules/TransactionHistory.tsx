@@ -86,7 +86,7 @@ const TransactionHistory = () => {
                                                         <p className="date-time">{moment(parseInt(timeStamp)*1000).format("h:mm A")}</p>
                                                     </td>
                                                     <td>
-                                                        <p className={`bold ${txnType}`}>${value}</p>
+                                                        <p className={`bold ${txnType}`}>${Math.round(parseFloat(value)*100)/100}</p>
                                                     </td>
                                                 </tr>
                                             </>

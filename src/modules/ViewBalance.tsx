@@ -41,7 +41,7 @@ const ViewBalance = () => {
             <div className="row">
                 <div className="col-xs-12 center">
                     <h3>Wallet Balance</h3>
-                    <p className="wallet-balance">$ {balance}</p>
+                    <p className="wallet-balance">$ {Math.round(parseFloat(balance)*100)/100}</p>
                 </div>
             </div>
             <div className="row">
