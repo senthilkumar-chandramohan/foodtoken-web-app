@@ -77,7 +77,7 @@ const TransactionHistory = () => {
                                                 <>{dateHeader}</>
                                                 <tr>
                                                     <td>
-                                                        <a href={`https://mumbai.polygonscan.com/tx/${hash}`} target="_blank">
+                                                        <a href={`https://sepolia.etherscan.io/tx/${hash}`} target="_blank">
                                                             <img className="dp" src={picture || defaultDP} />
                                                         </a>
                                                     </td>
