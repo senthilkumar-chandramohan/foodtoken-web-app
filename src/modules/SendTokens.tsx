@@ -6,6 +6,27 @@ import { SERVER_URL } from "../utils/constants";
 import { useAuth } from "../contexts/AuthContext";
 import Loader from "./Loader";
 
+const fetchWithTimeout = (url, options, timeout = 5000) => {
+    const controller = new AbortController();
+    const signal = controller.signal;
+
+    // Start the timeout
+    const timeoutId = setTimeout(() => controller.abort(), timeout);
+
+    return fetch(url, { ...options, signal })
+        .then(response => {
+            // Clear the timeout once the request is successful
+            clearTimeout(timeoutId);
+            return response;
+        })
+        .catch(error => {
+            if (error.name === 'AbortError') {
+                throw new Error(`Request timed out after ${timeout}ms`);
+            }
+            throw error;
+        });
+}
+
 const SendTokens = ({
     toUserId,
     sellerName = '',
@@ -32,7 +53,8 @@ const SendTokens = ({
 
     const paySeller = () => {
         setLoading(true);
-        fetch(`${SERVER_URL}/api/consumer/token`, {
+
+        fetchWithTimeout(`${SERVER_URL}/api/consumer/token`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -43,7 +65,7 @@ const SendTokens = ({
                 amount: payAmount,
                 note,
             }),
-        }).then(() => {
+        }, 60000).then(() => {
             setSuccess(true);
         }).catch((err) => {
             setError(true);
